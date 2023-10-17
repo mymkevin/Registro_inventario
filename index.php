@@ -8,13 +8,14 @@ if ($mysqli->connect_error) {
 
 // Obtener los datos del formulario
 $nombre = $_POST["nombre"];
-$cantidad = $_POST["cantidad"];
-$precio = $_POST["precio"];
+$Modelo = $_POST["Modelo"];
+$Color = $_POST["Color"];
+$Serie = $_post["Serie"];
 
 // Insertar el nuevo producto en la base de datos
-$query = "INSERT INTO productos (nombre, cantidad, precio) VALUES (?, ?, ?)";
+$query = "INSERT INTO productos (nombre, Modelo, Color, Serie) VALUES (?, ?, ?)";
 $stmt = $mysqli->prepare($query);
-$stmt->bind_param("sid", $nombre, $cantidad, $precio);
+$stmt->bind_param("sid", $nombre, $Modelo, $Color, $Serie);
 if ($stmt->execute()) {
     header("Location: index.html"); // Redirige a la página principal
 } else {
